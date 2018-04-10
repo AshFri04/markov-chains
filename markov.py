@@ -43,26 +43,28 @@ def make_chains(text_string):
     chains = {}
     words = text_string.split()
 
+    # for i in range(len(words)-2):
     for i, word in enumerate(words):
         try:
-            chains[(words[i], words[i+1])] = chains.get((words[i], words[i+1]), []) + [words[i+2]]
+            chains[(words[i], words[i+1])] = chains.get((words[i], words[i+1]),\
+                []) + [words[i+2]]
         except IndexError:
             None
-    for key in chains:
-        print key, chains[key]
+    # for key in chains:
+    #     print key, chains[key]
 
-
-    # return chains
+    return chains
 
 
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+    random_word = choice(chains.keys())
+    random_word
+    (random_word[1], choice(chains[random_word]))
 
-    # your code goes here
 
-    return " ".join(words)
+    # return " ".join(words)
 
 
 input_path = "green-eggs.txt"
