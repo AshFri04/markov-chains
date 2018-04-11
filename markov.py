@@ -50,8 +50,8 @@ def make_chains(text_string):
                 []) + [words[i+2]]
         except IndexError:
             None
-    for key in chains:
-        print key, chains[key]
+    # for key in chains:
+    #     print key, chains[key]
 
     return chains
 
@@ -62,25 +62,38 @@ def make_text(chains):
 
     word_list = []
 
+
     random_key = choice(chains.keys())
 
-    for word in random_key:
-        word_list.append(word)
-
-    new_key = (random_key[1], choice(chains[random_key]))
-    word_list.append(new_key[1])
-
     while True:
-
-        #check to see if new_key in chains
-        if not chains.get(new_key):
+        if random_key[0] == random_key[0].capitalize():
+            word_list.append(random_key)
             break
         else:
-            new_random_word = choice(chains[new_key])
-            word_list.append(new_random_word)
-            new_key = (new_key[1], new_random_word)
+            random_key = choice(chains.keys())
+            
 
-    return ' '.join(word_list)
+        # new_key = (random_key[1], choice(chains[random_key]))
+        # word_list.append(new_key[1])
+        
+        # else:
+        #     random_key = choice(chains.keys())
+        #     if random_key[0] == random_key[0].capitalize():
+        #         word_list.extend(random_key)
+
+    print word_list   
+
+    # while True:
+
+    #     #check to see if new_key in chains
+    #     if not chains.get(new_key):
+    #         break
+    #     else:
+    #         new_random_word = choice(chains[new_key])
+    #         word_list.append(new_random_word)
+    #         new_key = (new_key[1], new_random_word)
+
+    # return ' '.join([word_list])
 
 
 #            w1   w2            w3
@@ -94,7 +107,7 @@ def make_text(chains):
 import sys
 input_path = sys.argv[1]
 
-input_path = "taylorswiftlyrics.txt"
+# input_path = "taylorswiftlyrics.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
